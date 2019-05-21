@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SVG.js</title>
+  <script src="svg.js"></script>
+  
+</head>
+<body>
+  <div id="drawing"></div>
+  <input type="text" value="dragon text">dragon text</input>
+  <script>
+  	var t1 = "I started taking mental health seriously when I was diagnosed with generalized anxiety. I realized something must have been off before my diagnosis, but I chose to ignore it."
+  	var t2 = "I started taking mental health seriously when someone I knew was diagnosed with depression. I hadn’t even really noticed anything was wrong, and that scared me."
+  	var t3 = "I started taking mental health seriously when I realized I had too many friends struggling with mental illness. I wanted to learn how I could help them. I wanted to learn how to be a good friend."
+  	var draw = SVG('drawing').size(300, 300)
+	var rect = draw.rect(100, 100).attr({ fill: '#f06' })
+
+	var input = document.querySelector('input[type=text]')
+	var draw = SVG('drawing').viewbox(0, 0, 300, 300)
+	
+
+	var text = draw.text(function(add) { add.tspan(t1) })
+	path = 'M 10 80 T 60 80 T 160 100 T 300 100'
+	text.path(path).font({size: 3})
+
+	var text = draw.text(function(add) { add.tspan(t2) })
+	path = 'M 10 80 T 60 80 T 160 60 T 300 60'
+	text.path(path).font({size: 3})
+
+	var text = draw.text(function(add) { add.tspan(t3) })
+	path = 'M 10 80 T 60 80 T 160 140 T 300 140'
+	text.path(path).font({size: 3})
+	text.textPath().plot('M 10 80 T 60 80 T 160 140 T 300 180')
+
+	// text.build(true);
+	// text.animate().queue( function() {this.tspan(t1);})
+	// text.delay(1000).animate();
+	
+
+	// var line = draw.path(path);
+	// line.fill('none').stroke({ width: .5, color: '#000' })
+
+  </script>
+</body>
+</html>

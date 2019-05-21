@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>about to forget</title>
+</head>
+<body>
+  <div id="text"></div>
+  <script>
+    var poem = "One bird, two. Another with its mouth open,~\
+maybe at the grumble from my stomach. Another~\
+with its mouth closed and head tilted,~\
+eyeing me straight on. Seagull, and parakeet, ~\
+and kookaburra, a menagerie of birds with~\
+no allegiance to origin, though they are all~\
+line drawings. Unreal, animated only by~\
+the dove cooing somewhere outside.~\
+My father snores softly from the bed,~\
+exquisite in his very real flesh, which shudders~\
+oh-so-slightly with all that moves within him.~\
+A pigeon coos too, outside, ~\
+occasionally competing with the dove, ~\
+but mostly the air stays so still I can hear ~\
+the ocean like static in my ears, ~\
+the gentle ringing a memory of a place~\
+I'm about to forget."
+    var lines = poem.split('~');
+    var size = lines.length;
+    console.log(lines.length);
+    var count = 0;
+    for(var i = 0; i < size ; i++){
+      console.log('size', size);
+      console.log(i);
+      var div = document.getElementById('text');
+      div.innerHTML += '<br />';
+      var line = lines[i];
+      var words = line.split(' ');
+      for(var j=0, sizej = words.length; j<sizej; j++){
+        count++;
+        div.innerHTML += ' <span id="' + count + '">' + words[j] + '</span>';
+      }
+    }
+
+    
+
+    setInterval(myMethod, 5000);
+
+    function myMethod( )
+    {
+      //this will repeat every 5 seconds
+      //you can reset counter here
+      var rand = Math.floor((Math.random() * count) + 1);
+      var span = document.getElementById(rand);
+      var word = span.innerHTML;
+      console.log(word);
+      span.style.color = "white";
+    }
+    
+  </script>
+</body>
+</html>

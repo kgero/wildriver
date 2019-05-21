@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SVG.js</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.7.1/svg.js"></script>
+</head>
+<body>
+  <div id="drawing"></div>
+  <input type="text" value="Dragon----- - - - ->"></input>
+  <script>
+    const demoT = true;
+    if (demoT) {
+        var input = document.querySelector('input[type=text]')
+        var draw = SVG('drawing').viewbox(0, 0, 200, 200)
+        var text = draw.text(function (add) {
+            add.tspan(input.value);
+        });
+        text
+            .path('M10 80 T 40 10, 95 80 S 150 150, 180 80')
+            .animate(1000, '<>')
+            .plot('M10 80 T 40 150, 95 80 S 150 10, 180 80')
+            .loop(true, true);
+
+        input.addEventListener('keyup', updateText(text));
+
+        function updateText(textPath) {
+            return function () {
+                textPath.tspan(this.value);
+            }
+        }
+    }
+
+  </script>
+</body>
+</html>
